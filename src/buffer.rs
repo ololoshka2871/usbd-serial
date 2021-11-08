@@ -55,7 +55,7 @@ impl<S: BorrowMut<[u8]>> Buffer<S> {
             return 0;
         }
 
-        &self.store.borrow_mut()[self.wpos..self.wpos+count].copy_from_slice(&data[..count]);
+        let _ = &self.store.borrow_mut()[self.wpos..self.wpos+count].copy_from_slice(&data[..count]);
 
         self.wpos += count;
         count
